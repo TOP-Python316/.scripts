@@ -1,0 +1,27 @@
+{
+  "response": {
+    "count": 32363,
+    "items": [
+      {
+        "first_name": "Sonya",
+        "last_name": "Kargina",
+        "photo_50": "https://pp.vk.me/...2c1/J2EL--qCZa8.jpg",
+        "likes": 93,
+        "is_online": true,
+        "is_banned": false,
+        "mail": null,
+        "now": "2024-04-21 12:55:39"
+      },
+      {
+        "first_name": "Slava",
+        "last_name": "Kholod",
+        "photo_50": "https://pp.vk.me/...321/eTxKNQSJMuk.jpg",
+        "likes": 19,
+        "is_online": true,
+        "is_banned": false,
+        "mail": null,
+        "now": "2024-04-21 12:55:39"
+      }
+    ]
+  }
+}
