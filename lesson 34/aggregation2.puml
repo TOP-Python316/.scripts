@@ -1,0 +1,26 @@
+@startuml
+
+scale 2
+class Product {
+    -{static}default_date_format: <i>str</i>
+    +name: <i>str</i>
+    +produced: <i>date</i>
+    +expired: <i>date</i>
+    __init__()
+    __repr__()
+    +is_expired() -> <i>bool</i>
+}
+
+class Fridge {
+    +camera: <i>list</i> [Product]
+    __init__()
+    __iter__()
+    __getitem__()
+    __repr__()
+    +put() -> <i>None</i>
+    +clear_expired() -> <i>None</i>
+}
+
+Product -right-o Fridge
+
+@enduml

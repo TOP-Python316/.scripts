@@ -1,0 +1,21 @@
+@startuml
+scale 2
+
+class Sex {
+    #{static}repr: <i>dict</i> [<i>str</i>, <i>str</i>]
+    +value: <i>str</i>
+    __init__()
+    __repr__()
+}
+
+class Person {
+    +first_name: <i>str</i>
+    +last_name: <i>str</i>
+    sex: Sex
+    __init__()
+    __repr__()
+}
+
+Sex -left-* Person
+
+@enduml
