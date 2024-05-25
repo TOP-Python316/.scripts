@@ -1,0 +1,29 @@
+@startuml
+
+interface Abstraction {
+  + operation()
+  - implementation: Implementor
+}
+
+class RefinedAbstraction {
+  + operation()
+}
+
+interface Implementor {
+  + operationImpl()
+}
+
+class ConcreteImplementorA {
+  + operationImpl()
+}
+
+class ConcreteImplementorB {
+  + operationImpl()
+}
+
+Abstraction <|-- RefinedAbstraction
+Abstraction <|-right- Implementor
+Implementor <|-- ConcreteImplementorA
+Implementor <|-- ConcreteImplementorB
+
+@enduml
