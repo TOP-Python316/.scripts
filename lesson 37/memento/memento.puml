@@ -1,0 +1,31 @@
+@startuml
+
+interface Memento {
+  + get_state()
+  + set_state(state: Any)
+}
+
+class ConcreteMemento {
+  + state: Any
+  + get_state()
+  + set_state(state: Any)
+}
+
+class Originator {
+  + state: Any
+  + create_memento(): Memento
+  + restore_from_memento(memento: Memento)
+}
+
+class Caretaker {
+  + mementos: list<Memento>
+  + add_memento(memento: Memento)
+  + get_memento(index: int): Memento
+}
+
+Originator *-- Memento
+Originator *-- ConcreteMemento
+Caretaker *-- Memento
+Caretaker *-- ConcreteMemento
+
+@enduml

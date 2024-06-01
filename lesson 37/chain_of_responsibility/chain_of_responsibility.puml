@@ -1,0 +1,26 @@
+@startuml
+
+scale 2
+
+interface Handler {
+  + set_next(next: Handler)
+  + handle(request: Request)
+}
+
+class ConcreteHandlerA {
+  + handle(request: Request)
+}
+
+class ConcreteHandlerB {
+  + handle(request: Request)
+}
+
+class Request {
+  - data: Any
+}
+
+Handler <-- ConcreteHandlerA
+Handler <-- ConcreteHandlerB
+ConcreteHandlerA *-- ConcreteHandlerB
+
+@enduml

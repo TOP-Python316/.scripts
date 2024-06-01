@@ -1,0 +1,37 @@
+@startuml
+
+interface Mediator {
+  + send(message: string, colleague: Colleague)
+}
+
+class ConcreteMediator {
+  + colleagues: list<Colleague>
+  + send(message: string, colleague: Colleague)
+}
+
+interface Colleague {
+  + set_mediator(mediator: Mediator)
+  + receive(message: string)
+}
+
+class ConcreteColleagueA {
+  + mediator: Mediator
+  + set_mediator(mediator: Mediator)
+  + receive(message: string)
+  + send_a(message: string)
+}
+
+class ConcreteColleagueB {
+  + mediator: Mediator
+  + set_mediator(mediator: Mediator)
+  + receive(message: string)
+  + send_b(message: string)
+}
+
+Mediator <-- ConcreteMediator
+Colleague <-- ConcreteColleagueA
+Colleague <-- ConcreteColleagueB
+ConcreteMediator *-- ConcreteColleagueA
+ConcreteMediator *-- ConcreteColleagueB
+
+@enduml

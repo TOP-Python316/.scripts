@@ -1,0 +1,39 @@
+@startuml
+
+scale 2
+
+interface Command {
+  + execute()
+  + undo()
+}
+
+class ConcreteCommandA {
+  + receiver: Receiver
+  + execute()
+  + undo()
+}
+
+class ConcreteCommandB {
+  + receiver: Receiver
+  + execute()
+  + undo()
+}
+
+class Receiver {
+  + action_a()
+  + action_b()
+}
+
+class Invoker {
+  + command: Command
+  + set_command(command: Command)
+  + execute_command()
+}
+
+Command <-- ConcreteCommandA
+Command <-- ConcreteCommandB
+ConcreteCommandA *-- Receiver
+ConcreteCommandB *-- Receiver
+Invoker *-- Command
+
+@enduml

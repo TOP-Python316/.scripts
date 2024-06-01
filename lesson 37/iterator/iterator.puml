@@ -1,0 +1,30 @@
+@startuml
+
+interface Iterator {
+  + has_next(): boolean
+  + next(): object
+}
+
+class ConcreteIterator {
+  + aggregate: Aggregate
+  + cursor: integer
+  + has_next(): boolean
+  + next(): object
+}
+
+interface Aggregate {
+  + create_iterator(): Iterator
+}
+
+class ConcreteAggregate {
+  + items: array
+  + create_iterator(): Iterator
+  + add_item(item: object)
+  + remove_item(item: object)
+}
+
+Iterator <-- ConcreteIterator
+Aggregate <-- ConcreteAggregate
+ConcreteIterator *-- ConcreteAggregate
+
+@enduml
