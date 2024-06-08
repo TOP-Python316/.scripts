@@ -77,7 +77,7 @@ FROM MarvelCharacters;
 -- если нам нужна сортировка по возростанию, то можно не указывать ASC
 SELECT name, year, align
 FROM MarvelCharacters
-WHERE year >= 1990 and year <= 1999
+WHERE year >= 1990 AND year <= 1999
 ORDER BY year ASC;
 
 -- если нам нужна сортировка по убыванию, то нужно указать DESC
