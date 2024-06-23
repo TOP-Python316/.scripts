@@ -109,7 +109,7 @@ CREATE TABLE Classes (
 	name UNIQUE
 );
 
--- Создание таблицы Students с внешним ключом class\_id, связанным с полем id таблицы Classes
+-- Создание таблицы Students с внешним ключом class_id, связанным с полем id таблицы Classes
 CREATE TABLE Students (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
