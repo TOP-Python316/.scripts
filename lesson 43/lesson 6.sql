@@ -21,7 +21,6 @@ VALUES
 
 -- Приводим это к первой нормальной форме
 -- Удаление перечней в с столбцах (имя, фамилия разносим по разным столбцам)
-
 Drop table School;
 
 -- Создаем таблицу School
@@ -48,7 +47,6 @@ VALUES
 -- Приводим это ко второй нормальной форме
 -- У нас не будет составных ключей, поэтому просто выделим уникальные столбцы в отдельные таблицы
 -- Это закроет и третью нормальную форму
-
 Drop table School;
 
 -- Создадим нормализованные таблицы
@@ -63,7 +61,6 @@ Drop table School;
 -- Surname - фамилия студента
 -- PassportId - паспортные данные студента
 -- DepartmentId - идентификатор кафедры
-
 CREATE TABLE IF NOT EXISTS Students (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     Name TEXT, -- Стоило озабодится not null хотя бы для имени
@@ -77,7 +74,6 @@ CREATE TABLE IF NOT EXISTS Students (
 -- Таблица Паспортные данные студентов
 -- id - идентификатор паспортных данных
 -- PassNumber - номер паспорта
-
 CREATE TABLE IF NOT EXISTS PassportData (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     PassNumber TEXT UNIQUE
@@ -87,7 +83,6 @@ CREATE TABLE IF NOT EXISTS PassportData (
 -- Таблица Кафедра
 -- id - идентификатор кафедры
 -- Name - название кафедры
-
 CREATE TABLE IF NOT EXISTS Departments (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     Name TEXT UNIQUE
@@ -96,7 +91,6 @@ CREATE TABLE IF NOT EXISTS Departments (
 -- Таблица Преподаватели
 -- id - идентификатор преподавателя
 -- Name - имя преподавателя
-
 CREATE TABLE IF NOT EXISTS Teachers (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     Name TEXT,
@@ -108,7 +102,6 @@ CREATE TABLE IF NOT EXISTS Teachers (
 -- id - идентификатор связи
 -- StudentId - идентификатор студента
 -- TeacherId - идентификатор преподавателя
-
 CREATE TABLE IF NOT EXISTS StudentsTeachers (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     StudentId INTEGER NOT NULL,
@@ -122,7 +115,6 @@ CREATE TABLE IF NOT EXISTS StudentsTeachers (
 
 
 -- Добавим паспорта студентов в таблицу PassportData
-
 INSERT INTO PassportData (PassNumber)
 VALUES
     ('1234567890'),
@@ -131,7 +123,6 @@ VALUES
 
 
 -- Добавим кафедры в таблицу Departments
-
 INSERT INTO Departments (Name)
 VALUES
     ('Математика'),
@@ -149,7 +140,6 @@ VALUES
 
 -- Пробуем сделать запрос, где мы даем номер паспорта и название кафедры
 -- и добываем их id для создания записи в таблице студентов
-
 INSERT INTO Students (Name, Surname, PassportId, DepartmentId)
 VALUES
     ('Сергей', 
@@ -159,8 +149,7 @@ VALUES
 
     ('Сергей',
     'Иванов',
-    (SELECT id FROM PassportData WHERE PassNumber = '
-    '),
+    (SELECT id FROM PassportData WHERE PassNumber = '0987654321'),   '),
     (SELECT id FROM Departments WHERE Name = 'Химия')),
 
     ('Александр',
@@ -224,10 +213,7 @@ WHERE
 -- Практика
 -- Получите номер паспорта студента с именем Сергей, фамилией Иванов
 -- Попробуйте добавить в выборку кафедра not in ('Программирование', 'Химия')
-
 SELECT Students.id, Students.Name AS Имя, Students.Surname AS Фамилия, PassportData.PassNumber AS "Номер паспорта", Departments.Name AS Кафедра
-
-
 FROM Students
 JOIN PassportData ON Students.PassportId = PassportData.id
 JOIN Departments ON Students.DepartmentId = Departments.id
