@@ -267,13 +267,14 @@ CREATE TABLE IF NOT EXISTS marvel_characters_temp (
     appearances      INTEGER,
     first_appearance TEXT,
     year             INTEGER,
-    FOREIGN KEY (identity_id) REFERENCES identity(identity_id),
-    FOREIGN KEY (align_id) REFERENCES alignment(align_id),
-    FOREIGN KEY (eye_id) REFERENCES eye_color(eye_id),
-    FOREIGN KEY (hair_id) REFERENCES hair_color(hair_id),
-    FOREIGN KEY (sex_id) REFERENCES sex(sex_id),
-    FOREIGN KEY (gsm_id) REFERENCES GSM(gsm_id),
-    FOREIGN KEY (alive_id) REFERENCES living_status(status_id)
+    
+    FOREIGN KEY (identity_id) REFERENCES identity(id),
+    FOREIGN KEY (align_id) REFERENCES alignment(id),
+    FOREIGN KEY (eye_id) REFERENCES eye_color(id),
+    FOREIGN KEY (hair_id) REFERENCES hair_color(id),
+    FOREIGN KEY (sex_id) REFERENCES sex(id),
+    FOREIGN KEY (gsm_id) REFERENCES GSM(id),
+    FOREIGN KEY (alive_id) REFERENCES living_status(id)
 );
 ```
 #### Шаг 8: Наполнение Новой Таблицы Данными
